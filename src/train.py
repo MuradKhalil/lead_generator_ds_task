@@ -1,4 +1,5 @@
 import argparse
+from typing import Dict
 
 import joblib
 import pandas as pd
@@ -11,11 +12,11 @@ seed = 42
 target = 'b_gekauft_gesamt'
 features = ['b_specialisation_h', 'b_specialisation_j']
 
-def parse_args():
-    """_summary_
+def parse_args() -> Dict:
+    """function to parse cli argumenrs
 
     Returns:
-        _type_: _description_
+        Dict: dictionary of cli arguments
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--input_path")
@@ -26,7 +27,7 @@ def parse_args():
     return args
 
 def main():
-    """_summary_
+    """function that trains an ML model and saves it as a joblib file
     """
     args = parse_args()
     df = pd.read_csv(args['input_path'])

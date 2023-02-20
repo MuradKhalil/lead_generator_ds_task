@@ -6,33 +6,23 @@ from sklearn.base import BaseEstimator, TransformerMixin
 
 class SelectX(BaseEstimator, TransformerMixin):
     def __init__(self, optimal_features: List[str]) -> None:
-        """_summary_
+        """sklearn pipeline compatible class to select features needed for modeling
 
         Args:
-            optimal_features (List[str]): _description_
+            optimal_features (List[str]): list of optimal features
         """
         self.optimal_features = optimal_features
 
     def fit(self, X, y=None):
-        """_summary_
-
-        Args:
-            X (_type_): _description_
-            y (_type_, optional): _description_. Defaults to None.
-
-        Returns:
-            _type_: _description_
-        """
         return self
 
     def transform(self, X: pd.DataFrame, y=None) -> pd.DataFrame:
-        """_summary_
+        """method that does the column selection 
 
         Args:
-            X (pd.DataFrame): _description_
-            y (_type_, optional): _description_. Defaults to None.
+            X (pd.DataFrame): input dataframe
 
         Returns:
-            pd.DataFrame: _description_
+            pd.DataFrame: dataframe with the selected features only
         """
         return X[self.optimal_features]
